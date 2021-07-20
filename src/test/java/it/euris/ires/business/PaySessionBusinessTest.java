@@ -31,7 +31,7 @@ class PaySessionBusinessTest {
         paySessionBusiness = new PaySessionBusiness(paymentSessionServiceMocked);
     }
 
-    @Mock
+    @Spy
     CreatePaySessionResponse response;
 
     @Test
@@ -39,12 +39,13 @@ class PaySessionBusinessTest {
         // ARRANGE
         paySessionBusiness = new PaySessionBusiness(paymentSessionServiceMocked);
         CreatePaySessionRequest request = new CreatePaySessionRequest();
-        PaySession paySessionGood = new PaySession();
+        //PaySession paySessionGood = new PaySession();
         PaySession paySession = paymentSessionServiceMocked.createWebPaySession(request);
-        Mockito.when(paymentSessionServiceMocked.createWebPaySession(any())).thenReturn(paySessionGood);
-        // ACT ASSERT
+        Mockito.when(paymentSessionServiceMocked.createWebPaySession(any())).thenReturn(paySession);
+        // ACT
         paySessionBusiness.createPaySession(request);
-        //Mockito.verify(response, Mockito.times(1)).setSuccess(true);
+        // ASSERT
+        Mockito.verify(response, Mockito.times(1)).setSuccess(true);
         //Mockito.verify(response, Mockito.times(1)).setStatus(paySession.getStatus().name());
         //Mockito.verify(response, Mockito.times(1)).setPaySessionId(paySession.getUuid().toString());
     }
