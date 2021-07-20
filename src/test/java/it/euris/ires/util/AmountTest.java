@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 
 class AmountTest {
 
+  // comment
+
   Amount amount;
 
   @BeforeEach
