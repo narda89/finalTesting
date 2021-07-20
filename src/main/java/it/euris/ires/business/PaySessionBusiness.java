@@ -14,8 +14,8 @@ public class PaySessionBusiness {
     this.paymentSessionService = paymentSessionService;
   }
 
-  public CreatePaySessionResponse createPaySession(CreatePaySessionRequest request) {
-    CreatePaySessionResponse response = new CreatePaySessionResponse();
+  public CreatePaySessionResponse createPaySession(CreatePaySessionRequest request) { // data, not to be mocked
+    CreatePaySessionResponse response = new CreatePaySessionResponse(); // data, not to be mocked
     try {
       PaySession paySession = paymentSessionService.createWebPaySession(request);
       response.setSuccess(true);
